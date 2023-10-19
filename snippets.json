@@ -622,17 +622,55 @@
 			"",
 			"const aliceVerifier = UserVerifier.fromAddress(addressOfAlice);",
 			"const bobVerifier = UserVerifier.fromAddress(addressOfBob);",
+			"",
+			"$BLOCK_COMMENT_START Suppose we have the following transaction $BLOCK_COMMENT_END",
+			"const tx = Transaction.fromPlainObject({",
+			"\t\tnonce: 42,",
+			"\t\tvalue: \"12345\",",
+			"\t\tsender: addressOfAlice.bech32(),",
+			"\t\treceiver: addressOfBob.bech32(),",
+			"\t\tgasPrice: 1000000000,",
+			"\t\tgasLimit: 50000,",
+			"\t\tchainID: \"D\",",
+			"\t\tversion: 1,",
+			"\t\tsignature: \"3c5eb2d1c9b3ab2f578541e62dcfa5008976d11f85644a48884a8a6c4d2980fa14954ab2924d6e67c051562488096d2e79cd3c0378edf234a52e648e672d1b0a\"",
+			"});",
+			"",
+			"const serializedTx = tx.serializeForSigning();",
+			"const txSignature = tx.getSignature();",
+			"",
+			"$BLOCK_COMMENT_START And / or the following message and signature $BLOCK_COMMENT_END",
+			"message = new SignableMessage({ message: Buffer.from(\"hello\") });",
+			"serializedMessage = message.serializeForSigning();",
+			"messageSignature = Buffer.from(\"561bc58f1dc6b10de208b2d2c22c9a474ea5e8cabb59c3d3ce06bbda21cc46454aa71a85d5a60442bd7784effa2e062fcb8fb421c521f898abf7f5ec165e5d0f\", \"hex\");",
+			"",
+			"$BLOCK_COMMENT_START We can verify their signatures as follows $BLOCK_COMMENT_END",
+			"console.log(\"Is signature of Alice?\", aliceVerifier.verify(serializedTx, txSignature));",
+			"console.log(\"Is signature of Alice?\", aliceVerifier.verify(serializedMessage, messageSignature));",
+			"console.log(\"Is signature of Bob?\", bobVerifier.verify(serializedTx, txSignature));",
+			"console.log(\"Is signature of Bob?\", bobVerifier.verify(serializedMessage, messageSignature));"
 		],
 		"description": "Verifying signatures"
 	},
-	"cccccccc": {
-		"prefix": "managesendernonce",
+	"Decoding transaction metadata": {
+		"prefix": "decode-transaction-meta",
 		"body": [
-			"alice.incrementNonce();",
-			"console.log(\"Nonce:\", alice.nonce);"
+			"$BLOCK_COMMENT_START Using the transaction-decoder\nIn order to decode the metadata (function, arguments, transfers) from a transaction payload, do as follows $BLOCK_COMMENT_END",
+			"import { TransactionDecoder, TransactionMetadata } from \"@multiversx/sdk-transaction-decoder\";",
+			"",
+			"let transactionOnNetwork = await networkProvider.getTransaction(txHash);",
+			"let metadata = new TransactionDecoder().getTransactionMetadata({",
+			"\t\tsender: transactionOnNetwork.sender.bech32(),",
+			"\t\treceiver: transactionOnNetwork.receiver.bech32(),",
+			"\t\tdata: transactionOnNetwork.data.toString(\"base64\"),",
+			"\t\tvalue: transactionOnNetwork.value.toString(),",
+			"\t\ttype: transactionOnNetwork.type",
+			"});"
 		],
-		"description": "cccccccc"
+		"description": "Decoding transaction metadata"
 	},
+
+	
 	"cccccccc": {
 		"prefix": "managesendernonce",
 		"body": [
