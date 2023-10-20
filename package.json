@@ -1,6 +1,7 @@
 {
   "name": "multiversx-tools-snippets",
-  "displayName": "Multiversx-Tools-Snippets",
+  "displayName": "multiversx-tools-snippets",
+  "publisher": "mvs-blockchain-hackers",
   "description": "\"Multiversx-Tools-Snippets\" is a set of code snippets designed to enhance developer productivity and streamline common coding tasks within the Multiversx Tools ecosystem.",
   "version": "0.0.1",
   "icon": "logo.png",
@@ -17,7 +18,10 @@
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
-      
+      {
+        "command": "extender-one.helloWorld",
+        "title": "Hello World"
+      }
     ],
     "snippets": [
       {
@@ -32,15 +36,7 @@
         "language": "javascript,typescript",
         "path": "./snippets/dapps-provider.json"
       }
-    ],
-    "views": {
-      "explorer": [
-        {
-          "id": "explorerTree",
-          "name": "Multiversx Scripts"
-        }
-      ]
-    }
+    ]
   },
   "scripts": {
     "vscode:prepublish": "yarn run compile",
