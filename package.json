@@ -21,7 +21,7 @@
     "snippets": [
 			{
 				"language": "javascript",
-				"path": "./snippets.json"
+				"path": "./snippets/cookbook.json"
 			}
 		]
   },

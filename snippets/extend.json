@@ -1,0 +1,103 @@
+{
+	"Performing HTTP requests from scratch": {
+		"prefix": "fresh-http-request",
+		"body": [
+      "$BLOCK_COMMENT_START Broadcasting a transaction $BLOCK_COMMENT_END",
+      "import axios, { AxiosResponse } from \"axios\";",
+      "",
+      "let tx = new Transaction({ /* provide the fields */ });",
+      "// ... sign the transaction using a dApp / signing provider",
+      "let data = tx.toSendable();",
+      "let url = \"https://devnet-api.multiversx.com/transactions\";",
+      "let response: AxiosResponse = await axios.post(url, data, {",
+      "\t\theaders: {",
+      "\t\t\t\t\"Content-Type\": \"application/json\",",
+      "\t\t}",
+      "});",
+      "let txHash = response.data.txHash;",
+      "",
+      "$BLOCK_COMMENT_START Fetching a transaction $BLOCK_COMMENT_END",
+      "let url = `https://devnet-api.multiversx.com/transactions/${txHash}`;",
+      "let response = await axios.get(url);",
+      "let transactionOnNetwork = TransactionOnNetwork.fromApiHttpResponse(txHash, response.data);",
+      "",
+      "$BLOCK_COMMENT_START Querying a smart contract (with parsing the results) $BLOCK_COMMENT_END",
+      "let query = contract.createQuery({",
+      "\t\tfunc: new ContractFunction(\"foobar\"),",
+      "\t\targs: [new AddressValue(addressOfAlice)],",
+      "\t\tcaller: new Address(\"erd1...\")",
+      "});",
+      "",
+      "let url = \"https://devnet-api.multiversx.com/query\";",
+      "let data = {",
+      "\t\tscAddress: query.address.bech32(),",
+      "\t\tcaller: query.caller?.bech32() ? query.caller.bech32() : undefined,",
+      "\t\tfuncName: query.func.toString(),",
+      "\t\tvalue: query.value ? query.value.toString() : undefined,",
+      "\t\targs: query.getEncodedArguments()",
+      "};",
+      "",
+      "let response: AxiosResponse = await axios.post(url, data, {",
+      "\t\theaders: {",
+      "\t\t\t\t\"Content-Type\": \"application/json\",",
+      "\t\t}",
+      "});",
+      "",
+      "let queryResponse = {",
+      "\t\treturnCode: response.data.returnCode,",
+      "\t\treturnMessage: response.data.returnMessage,",
+      "\t\tgetReturnDataParts: () => response.data.returnData.map((item) => Buffer.from(item || \"\", \"base64\"));",
+      "};",
+      "",
+      "let endpointDefinition = contract.getEndpoint(\"foobar\");",
+      "let { firstValue, secondValue, returnCode } = resultsParser.parseQueryResponse(queryResponse, endpointDefinition);"
+      
+		],
+		"description": "One can broadcast transactions and GET resources from the MultiversX API (or Gateway) by performing simple HTTP requests using the axios utility. Below are a few examples"
+	},
+	"Extending a default Network Provider": {
+		"prefix": "extend-default-network-provider",
+		"body": [
+      "export class MyTailoredNetworkProvider extends ApiNetworkProvider {",
+      "\t\tasync getEconomics(): Promise<{totalSupply: number, marketCap: number}> {",
+      "\t\t\t\tlet response = await this.doGetGeneric(\"economics\");",
+      "\t\t\t\treturn { totalSupply: response.totalSupply, marketCap: response.marketCap }",
+      "\t\t}",
+      "",
+      "\t\t// ... other methods",
+      "}"
+		],
+		"description": "You can also derive from the default network providers (ApiNetworkProvider and ProxyNetworkProvider) and overwrite / add additional methods, making use of doGetGeneric() and doPostGeneric()"
+	},
+	"Customizing the transaction awaiting": {
+		"prefix": "log",
+		"body": [
+      "await transactionWatcher.awaitAllEvents(transaction, [\"mySpecialEventFoo\", \"mySpecialEventBar\"]);",
+      "await transactionWatcher.awaitAnyEvents(transaction, [\"mySpecialEventFoo\", \"mySpecialEventBar\"]);"
+		],
+		"description": "If, for some reason, the default transaction completion detection algorithm provided by sdk-js does not satisfy your requirements, you may want to use a different strategy for transaction awaiting, such as"
+	},
+	"Extending the contract results parser": {
+		"prefix": "extend-contract-results-parser",
+		"body": [
+      "export class MyTailoredResultsParser extends ResultsParser {",
+      "\t\tprotected createBundleWithCustomHeuristics(transaction: ITransactionOnNetwork, transactionMetadata: TransactionMetadata): UntypedOutcomeBundle | null {",
+      "\t\t\t\tlet returnMessage: string = \"<< extract the message from the input transaction object >>\";",
+      "\t\t\t\tlet values: Buffer[] = [",
+      "\t\t\t\t\t\tBuffer.from(\"<< extract 1st result from the input transaction object >>\"),",
+      "\t\t\t\t\t\tBuffer.from(\"<< extract 2nd result from the input transaction object >>\"),",
+      "\t\t\t\t\t\tBuffer.from(\"<< extract 3rd result from the input transaction object >>\"),",
+      "\t\t\t\t\t\t// ...",
+      "\t\t\t\t]",
+      "",
+      "\t\t\t\treturn {",
+      "\t\t\t\t\t\treturnCode: ReturnCode.Ok,",
+      "\t\t\t\t\t\treturnMessage: returnMessage,",
+      "\t\t\t\t\t\tvalues: values",
+      "\t\t\t\t};",
+      "\t\t}",
+      "}"
+		],
+		"description": "If, for some reason (e.g. a bug), the default ResultsParser provided by sdk-js does not satisfy your requirements, you may want to extend it and override the method createBundleWithCustomHeuristics()"
+	}
+}
