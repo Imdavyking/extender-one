@@ -21,15 +21,15 @@
     ],
     "snippets": [
       {
-        "language": "javascript",
+        "language": "javascript,typescript",
         "path": "./snippets/cookbook.json"
       },
       {
-        "language": "javascript",
+        "language": "javascript,typescript",
         "path": "./snippets/extend.json"
       },
       {
-        "language": "javascript",
+        "language": "javascript,typescript",
         "path": "./snippets/dapps-provider.json"
       }
     ],
