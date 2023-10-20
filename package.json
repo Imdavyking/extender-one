@@ -22,6 +22,14 @@
 			{
 				"language": "javascript",
 				"path": "./snippets/cookbook.json"
+			},
+			{
+				"language": "javascript",
+				"path": "./snippets/extend.json"
+			},
+			{
+				"language": "javascript",
+				"path": "./snippets/dapps-provider.json"
 			}
 		]
   },
