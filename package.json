@@ -1,13 +1,17 @@
 {
-  "name": "extender-one",
-  "displayName": "first vscode extension",
-  "description": "starter into the world or extensions on vscode",
+  "name": "Multiversx-Tools-Snippets",
+  "displayName": "Multiversx-Tools-Snippets",
+  "description": "\"Multiversx-Tools-Snippets\" is a set of code snippets designed to enhance developer productivity and streamline common coding tasks within the Multiversx Tools ecosystem.",
   "version": "0.0.1",
+  "icon": "logo.png",
+  "repository": {
+    "url": "https://github.com/favourwright/extender-one/"
+  },
   "engines": {
-    "vscode": "^1.83.0"
+    "vscode": "^1.28.0"
   },
   "categories": [
-    "Other", "Snippets"
+    "Snippets"
   ],
   "activationEvents": [],
   "main": "./out/extension.js",
@@ -19,19 +23,19 @@
       }
     ],
     "snippets": [
-			{
-				"language": "javascript",
-				"path": "./snippets/cookbook.json"
-			},
-			{
-				"language": "javascript",
-				"path": "./snippets/extend.json"
-			},
-			{
-				"language": "javascript",
-				"path": "./snippets/dapps-provider.json"
-			}
-		]
+      {
+        "language": "javascript",
+        "path": "./snippets/cookbook.json"
+      },
+      {
+        "language": "javascript",
+        "path": "./snippets/extend.json"
+      },
+      {
+        "language": "javascript",
+        "path": "./snippets/dapps-provider.json"
+      }
+    ]
   },
   "scripts": {
     "vscode:prepublish": "yarn run compile",
