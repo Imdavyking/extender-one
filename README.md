@@ -1,71 +1,35 @@
-# extender-one README
+**Project Description**
 
-This is the README for your extension "extender-one". After writing up a brief description, we recommend including the following sections.
+**Title**: Multiversx-Tools-Snippets
 
-## Features
+**Overview**:
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+Multiversx-Tools-Snippets is a comprehensive collection of code snippets meticulously designed to augment developer productivity and streamline common coding tasks within the Multiversx Tools ecosystem. In the ever-evolving world of software development, time is a precious resource. Multiversx-Tools-Snippets empowers developers by offering a curated set of code segments that simplify and expedite the development process.
 
-For example if there is an image subfolder under your extension project workspace:
+**Key Features**:
 
-\!\[feature X\]\(images/feature-x.png\)
+1. **Extensive Library**: Multiversx-Tools-Snippets boasts an extensive library of snippets covering a wide range of functionalities and use cases within the Multiversx Tools ecosystem.
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+2. **Consistency and Best Practices**: Each snippet adheres to the best practices and coding standards specific to Multiversx Tools, ensuring that your code is both efficient and maintainable.
 
-## Requirements
+3. **Time Efficiency**: With our snippets, developers can significantly reduce the time spent on writing repetitive code, enabling them to focus on solving more complex problems and innovating.
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+4. **Customization**: While the snippets are ready to use, they are also highly customizable. Developers can tailor them to fit the unique requirements of their projects.
 
-## Extension Settings
+5. **Community Collaboration**: Multiversx-Tools-Snippets is a platform for developers to collaborate and share their own snippets, fostering a vibrant and supportive community.
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+**Functionality**:
 
-For example:
+Multiversx-Tools-Snippets is a simple yet powerful tool. Developers can easily incorporate these code snippets into their Multiversx Tools projects. Whether it's handling data manipulation, implementing security measures, or managing user interfaces, the snippets cover a wide spectrum of functionalities, simplifying the coding process. Just copy and paste the relevant snippet into your codebase and adapt it to your specific needs.
 
-This extension contributes the following settings:
+**Technical Stack**:
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+- **Supported Languages**: The snippets are compatible with popular programming languages used in the Multiversx Tools ecosystem.
+- **Documentation**: Clear and detailed documentation is available to guide developers on how to use and customize the snippets.
+- **Version Control**: Multiversx-Tools-Snippets is maintained through version control, ensuring regular updates and improvements.
 
-## Known Issues
+**Unique Aspects**:
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
+Multiversx-Tools-Snippets distinguishes itself by being a specialized resource tailored specifically for Multiversx Tools developers. It serves as an essential tool for both beginners looking to learn and experienced developers seeking to boost their productivity. The vibrant community surrounding this project ensures ongoing support and continuous enhancement of the snippet library.
 
 ---
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
